@@ -1,0 +1,28 @@
+@import '_mixin';
+.j-notification {
+    width: 350px;
+    overflow: hidden;
+    opacity: 1;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
+    @include box-sizing();
+    @include border-radius(2px);
+    @include position(fixed, null, 16px);
+    @include transition(transform, .3s, linear);
+    @include transition(right, .3s, linear);
+    @include transition(top, .4s, linear);
+    .message>.icon {
+        @include size(42px!important, 42px!important);
+    }
+}
+
+.j-notification-enter-active,
+.j-notification-leave-active {
+    transition: opacity .5s;
+}
+
+.j-notification-enter,
+.j-notification-leave-to {
+    opacity: 0;
+}

@@ -1,0 +1,5 @@
+@import '../_mixin';
+.sub-content {
+    margin-top: 40px;
+    @include position(absolute, 0, 0, 0, 0);
+}

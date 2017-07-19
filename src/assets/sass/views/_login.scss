@@ -1,0 +1,13 @@
+@import '../_variable';
+@import '../_mixin';
+.logo-img {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    @include bg-src($logo-img);
+}
+
+.system-name {
+    font-size: 22px;
+    margin-left: 20px;
+}
