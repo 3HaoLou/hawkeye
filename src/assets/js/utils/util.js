@@ -82,15 +82,15 @@ export function getDefaultPageSize() {
  * @param {array} config
  * @param {array} renderFn
  */
-export function bindRenderFn(config, renderFn, components) {
+export function bindRenderFn(config, components) {
     _.forEach(config, (value) => {
-        if (renderFn && renderFn.length > 0) {
-            _.forEach(renderFn, (func) => {
-                if (value.cellRenderer === func.name) {
-                    value.cellRenderer = func;
-                }
-            });
-        }
+        // if (renderFn && renderFn.length > 0) {
+        //     _.forEach(renderFn, (func) => {
+        //         if (value.cellRenderer === func.name) {
+        //             value.cellRenderer = func;
+        //         }
+        //     });
+        // }
 
         if (components && components.length > 0) {
             _.forEach(components, (component) => {

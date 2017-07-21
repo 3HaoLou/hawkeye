@@ -23159,11 +23159,23 @@ ag-grid-ng2 {
   bottom: 50px;
   left: 0; }
 
+.module-table .ag-material .ag-root {
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080; }
+
 .module-table .ag-material .ag-header-cell-label, .module-table .ag-material .ag-cell-focus, .module-table .ag-material .ag-ltr .ag-cell-no-focus {
   text-align: center; }
 
 .module-table .ag-material .ag-header {
-  border-top: 1px solid #808080; }
+  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.5);
+  z-index: 1; }
+
+.module-table .ag-material .ag-cell-not-inline-editing {
+  padding-top: 0 !important;
+  line-height: 40px; }
+
+.module-table .ag-material .ag-ltr .ag-header-cell, .module-table .ag-material .ag-cell-not-inline-editing {
+  border-right: 1px solid #d6d6d6; }
 
 .module-filter {
   width: 320px;
@@ -23173,6 +23185,9 @@ ag-grid-ng2 {
   -ms-flex-negative: 0;
   flex-shrink: 0;
   border-left: 1px solid #d6d6d6; }
+
+.module-filter .filter-item .content, .module-filter .status-item .content {
+  padding: 0.5em 1em 0.5em !important; }
 
 .module-filter .filter-item {
   color: #333 !important; }
@@ -23185,10 +23200,23 @@ ag-grid-ng2 {
   -o-transition: background-color linear .2s;
   -webkit-transition: background-color linear .2s; }
 
-.module-filter .filter-item .icon {
+.module-filter .filter-item.filter-item-selected.icon {
   color: #43a047 !important; }
 
-.module-filter .filter-item .content {
+.module-filter .status-item {
+  color: #fff !important; }
+
+.module-filter .status-item.status-item-selected {
+  color: #fff !important;
+  transition: background-color linear .2s;
+  -moz-transition: background-color linear .2s;
+  -o-transition: background-color linear .2s;
+  -webkit-transition: background-color linear .2s; }
+
+.module-filter .status-item.status-item-selected.icon {
+  color: #fff !important; }
+
+.module-filter .status-item .content {
   padding: 0.5em 1em 0.5em !important; }
 
 .logo-img {
@@ -23234,5 +23262,101 @@ html, body {
   font-size: 14px;
   line-height: 1.4285em;
   font-smoothing: antialiased; }
+
+/*!
+ * # Semantic UI 0.0.8 - Calendar
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+.ui.calendar .ui.popup {
+  max-width: none;
+  padding: 0;
+  border: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.ui.calendar .calendar:focus {
+  outline: 0; }
+
+.ui.calendar .ui.popup .ui.grid {
+  display: block;
+  white-space: nowrap; }
+
+.ui.calendar .ui.popup .ui.grid > .column {
+  width: auto; }
+
+.ui.calendar .ui.table.minute, .ui.calendar .ui.table.month, .ui.calendar .ui.table.year {
+  min-width: 15em; }
+
+.ui.calendar .ui.table.day {
+  min-width: 18em; }
+
+.ui.calendar .ui.table.hour {
+  min-width: 20em; }
+
+.ui.calendar .ui.table tr td, .ui.calendar .ui.table tr th {
+  padding: .5em;
+  white-space: nowrap; }
+
+.ui.calendar .ui.table tr th {
+  border-left: none; }
+
+.ui.calendar .ui.table tr th .icon {
+  margin: 0; }
+
+.ui.calendar .ui.table tr:first-child th {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0; }
+
+.ui.calendar .ui.table.day tr:first-child th {
+  border: none; }
+
+.ui.calendar .ui.table.day tr:nth-child(2) th {
+  padding-top: .2em;
+  padding-bottom: .3em; }
+
+.ui.calendar .ui.table tr td {
+  padding-left: .1em;
+  padding-right: .1em; }
+
+.ui.calendar .ui.table tr .link {
+  cursor: pointer; }
+
+.ui.calendar .ui.table tr .prev.link {
+  width: 14.28571429%;
+  position: absolute;
+  left: 0; }
+
+.ui.calendar .ui.table tr .next.link {
+  width: 14.28571429%;
+  position: absolute;
+  right: 0; }
+
+.ui.calendar .ui.table tr .disabled {
+  pointer-events: none;
+  color: rgba(40, 40, 40, 0.3); }
+
+.ui.calendar .ui.table tr td.today {
+  font-weight: 700; }
+
+.ui.calendar .ui.table tr td.range {
+  background: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.95);
+  box-shadow: none; }
+
+.ui.calendar .ui.table.inverted tr td.range {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  box-shadow: none; }
+
+.ui.calendar .calendar.active .ui.table tbody tr td.focus, .ui.calendar .calendar.active .ui.table.inverted tbody tr td.focus, .ui.calendar .calendar:focus .ui.table tbody tr td.focus, .ui.calendar .calendar:focus .ui.table.inverted tbody tr td.focus {
+  box-shadow: inset 0 0 0 1px #85B7D9; }
 
 /*# sourceMappingURL=style-min.css.map */

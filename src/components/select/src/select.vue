@@ -32,7 +32,7 @@
                 let selectedItem;
 
                 this.options.forEach((option) => {
-                    if (value === option.value) {
+                    if (value == option.value) {
                         selectedItem = option;    
                     }
                 });

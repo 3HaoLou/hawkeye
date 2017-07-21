@@ -15,16 +15,7 @@
             :sizeColumnsToFit="true"
 
             :cellClicked="onCellClicked"
-            
             :gridReady="onReady">
-
-            <!-- :headerCellRenderer="headerCellRenderer" -->
-
-            <!-- :toolPanelSuppressRowGroups="true"
-            :toolPanelSuppressValues="true"
-            :toolPanelSuppressPivots="true"
-            :toolPanelSuppressPivotMode="true" -->
-            <!-- :suppressRowClickSelection="true" -->
         </ag-grid-vue>
     </div>
 </template>
@@ -90,13 +81,8 @@
         },
         methods: {
             onReady () {
-                console.info('shl-table is ready!');
+                console.info('ag-grid is ready!');
             },
-            // headerCellRenderer (params) {
-            //     params.eHeaderCell.style.lineHeight = '40px';
-            //     params.eHeaderCell.style.fontWeight = 'bold';
-            //     return params.value;
-            // },
             onCellClicked (params) {
                 this.$emit('on-cell-clicked', params)
             },

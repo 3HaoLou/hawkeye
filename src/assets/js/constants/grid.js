@@ -4,7 +4,7 @@
 export const ORDER_LIST = [
     { headerName: '#', field: 'index', pinned: 'left', suppressMenu: true, width: 60, headerComponentFramework: 'index', cellRendererFramework: 'index' },
     { headerName: '订单号', field: 'orderNo', width: 80, suppressMenu: true, headerComponentFramework: 'orderNo' },
-    { headerName: '订单状态', field: 'statusDesc', cellRenderer: 'renderOrderStatus', width: 100, suppressMenu: true, headerComponentFramework: 'statusDesc' },
+    { headerName: '订单状态', field: 'statusDesc', width: 100, suppressMenu: true, headerComponentFramework: 'statusDesc', cellRendererFramework: 'statusDesc' },
     { headerName: '联系人', field: 'clientName', width: 100, suppressMenu: true, headerComponentFramework: 'clientName' },
     { headerName: '手机号', field: 'clientMobile', width: 120, suppressMenu: true, headerComponentFramework: 'clientMobile' },        
     { headerName: '区域', field: 'clinetDistrict', width: 120, suppressMenu: true },        
@@ -14,11 +14,11 @@ export const ORDER_LIST = [
     { headerName: 'AM', field: 'pmDesc', width: 100, suppressMenu: true },
     { headerName: '管家', field: 'stewardDesc', width: 100, suppressMenu: true },
     { headerName: '施工队长', field: 'foremanDesc', width: 100, suppressMenu: true },
-    { headerName: '渠道', field: 'channelDesc', width: 120, suppressMenu: true },
+    // { headerName: '渠道', field: 'channelDesc', width: 120, suppressMenu: true },
     { headerName: '客服', field: 'customDesc', width: 100, suppressMenu: true },
-    { headerName: '业主详细需求', field: 'clientRequest', width: 400, suppressMenu: true },
-    { headerName: '订单创建时间', field: 'createTime', width: 150, suppressMenu: true },
-    { headerName: '合同金额', field: 'ContractAmount', width: 100, suppressMenu: true },
+    { headerName: '业主详细需求', field: 'clientRequest', width: 400, suppressMenu: true, hide: true },
+    { headerName: '订单创建时间', field: 'createTime', width: 150, suppressMenu: true, hide: true },
+    { headerName: '合同金额', field: 'ContractAmount', width: 100, suppressMenu: true, hide: true },
 ];
 
 export const CONSTRUCT_ORDER_LIST = [

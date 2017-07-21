@@ -16,7 +16,6 @@
                 gridHeaderStyle: {
                     lineHeight: '40px',
                     height: '40px',
-                    marginTop: '-16px'
                 },
                 menuIcon: '',
                 sort: '',
@@ -25,7 +24,7 @@
             }
         },
         mounted () {
-            console.log(this.params);  
+            // console.log(this.params);  
         },
         methods: {
             onSortRequested ($event) {
