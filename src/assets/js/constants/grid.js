@@ -1,6 +1,26 @@
 /**
  * Created by jason on 28/06/2017.
  */
+export const ORDER_LIST = [
+    { headerName: '#', field: 'index', pinned: 'left', suppressMenu: true, width: 60, headerComponentFramework: 'index', cellRendererFramework: 'index' },
+    { headerName: '订单号', field: 'orderNo', width: 80, suppressMenu: true, headerComponentFramework: 'orderNo' },
+    { headerName: '订单状态', field: 'statusDesc', cellRenderer: 'renderOrderStatus', width: 100, suppressMenu: true, headerComponentFramework: 'statusDesc' },
+    { headerName: '联系人', field: 'clientName', width: 100, suppressMenu: true, headerComponentFramework: 'clientName' },
+    { headerName: '手机号', field: 'clientMobile', width: 120, suppressMenu: true, headerComponentFramework: 'clientMobile' },        
+    { headerName: '区域', field: 'clinetDistrict', width: 120, suppressMenu: true },        
+    { headerName: '地址', field: 'clientAddress', suppressMenu: true },
+    { headerName: '量房时间', field: 'measureTimeFormat', width: 150, suppressMenu: true },
+    { headerName: '开工时间', field: 'beginConstructionTimeFormat', width: 150, suppressMenu: true },
+    { headerName: 'AM', field: 'pmDesc', width: 100, suppressMenu: true },
+    { headerName: '管家', field: 'stewardDesc', width: 100, suppressMenu: true },
+    { headerName: '施工队长', field: 'foremanDesc', width: 100, suppressMenu: true },
+    { headerName: '渠道', field: 'channelDesc', width: 120, suppressMenu: true },
+    { headerName: '客服', field: 'customDesc', width: 100, suppressMenu: true },
+    { headerName: '业主详细需求', field: 'clientRequest', width: 400, suppressMenu: true },
+    { headerName: '订单创建时间', field: 'createTime', width: 150, suppressMenu: true },
+    { headerName: '合同金额', field: 'ContractAmount', width: 100, suppressMenu: true },
+];
+
 export const CONSTRUCT_ORDER_LIST = [
     { headerName: '#', field: 'index', pinned: 'left', width: 40, suppressSizeToFit: true, suppressMenu: true },
     { headerName: '订单号', field: 'orderNo', pinned: 'left', filter: 'text', width: 80 },

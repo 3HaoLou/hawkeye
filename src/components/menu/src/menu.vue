@@ -43,6 +43,8 @@
                 this.$router.push({
                     name: uri
                 });
+
+                $('.ui.sidebar').sidebar('hide');
             }
         }
     }

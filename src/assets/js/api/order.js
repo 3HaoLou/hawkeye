@@ -44,8 +44,42 @@ export function ConstructOrderInfo(orderId) {
     );
 }
 
+    // { headerName: '#', field: 'index', pinned: 'left', width: 40, suppressSizeToFit: true, suppressMenu: true },
+    // { headerName: '订单号', field: 'orderNo', pinned: 'left', filter: 'text', width: 80 },
+    // { headerName: '订单状态', field: 'statusDesc', cellRenderer: 'renderOrderStatus', width: 100 },
+    // { headerName: '联系人', field: 'clientName', filter: 'text', width: 100 },
+    // { headerName: '手机号', field: 'clientMobile', filter: 'text', width: 120 },        
+    // { headerName: '区域', field: 'clientMobile', filter: 'text', width: 120 },        
+    // { headerName: '地址', field: 'clientAddress', filter: 'text' },
+    // { headerName: '量房时间', field: 'measureTimeFormat', filter: 'text', width: 150 },
+    // { headerName: '开工时间', field: 'beginConstructionTime', filter: 'text', width: 150 },
+    // { headerName: 'AM', field: 'pmDesc', width: 100 },
+    // { headerName: '管家', field: 'stewardDesc', width: 100 },
+    // { headerName: '施工队长', field: 'foremanDesc', width: 100 },
+    // { headerName: '渠道', field: 'channelDesc', width: 120 },
+    // { headerName: '客服', field: 'customDesc', width: 100 },
+    // { headerName: '业主详细需求', field: 'clientRequest', filter: 'text', width: 400 },
+    // { headerName: '订单创建时间', field: 'createTime', filter: 'text', width: 150, hide: true },
+    // { headerName: '合同金额', field: 'ContractAmount', filter: 'text', width: 100 },
+
 function convertOrderList(data) {
-    console.log(data);
+    if (data.page.result && data.page.result.length > 0) {
+        _.forEach(data.page.result, (value, key) => {
+            value.selected = false;
+            value.index = ++key;
+            value.orderId = value.id;
+            value.statusDesc = FLAG.ORDER_STATUS_DESC[value.status];
+            value.clientName = value.contact;
+            value.clientMobile = value.mobile;
+            value.clinetDistrict = value.community ? value.community.districtName : '';
+            value.clientAddress = value.community ? value.community.address : '';
+            value.clientRequest = value.description;
+            value.pmDesc = value.pm ? value.pm.name : '';
+            value.customDesc = value.cs ? value.cs.name : '';
+            value.foremanDesc = value.foreman ? value.foreman.name : '';
+            value.stewardDesc = value.steward ? value.steward.name : '';
+        })
+    }
 
     return data;
 }

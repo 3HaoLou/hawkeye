@@ -46,7 +46,13 @@ const actions = {
 
             commit(types.USER_INFO, userInfo);
         } else {
-            commit(types.USER_INFO, null);
+            let _userInfo = AccountService.getUserInfo();
+
+            if (_userInfo) {
+                commit(types.USER_INFO, _userInfo);
+            } else {
+                commit(types.USER_INFO, null);
+            }
         }
     },
     sideMenu({ commit }) {

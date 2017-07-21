@@ -4,6 +4,7 @@
     width: 40px;
     height: 40px;
     display: inline-block;
+    @include border-radius(100%);
     @include bg-src($logo-img);
 }
 

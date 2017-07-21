@@ -1,6 +1,6 @@
 <template>
     <div class="ui styled accordion" :class="{'fluid': isFull}">
-        <div class="active title">
+        <div class="active title" :style="titleStyle">
             <i class="dropdown icon"></i>
             {{title}}
         </div>
@@ -21,14 +21,47 @@
             isFull: {
                 type: Boolean,
                 default: false
+            },
+            value: Boolean
+        },
+        data () {
+            return {
+                titleStyle: {
+                    color: '#333'
+                },
+                status: false
+            }
+        },
+        watch: {
+            'value' (status) {
+
+                if (status) {
+                    $(this.$el).accordion('open', 0);
+                } else {
+                    $(this.$el).accordion('close', 0);
+                }
             }
         },
         mounted () {
-            if (this.isOpen) {
-                $(this.$el).accordion('open', 0);
-            } else {
-                $(this.$el).accordion('close', 0);
-            }
+            this.init();
+
+            $(this.$el).accordion({ onChange: this.onChange });
+        },
+        methods: {
+            init () {
+                if (this.isOpen) {
+                    this.status = true;
+                    $(this.$el).accordion('open', 0);
+                } else {
+                    this.status = false;
+                    $(this.$el).accordion('close', 0);
+                }
+            },
+            onChange () {
+                this.status = !this.status;
+
+                this.$emit('input', this.status);
+            },
         }
     }
 </script>

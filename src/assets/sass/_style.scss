@@ -6,8 +6,9 @@
 @import '_layout';
 @import '_notification';
 @import './components/_loading';
-@import './components/_content';
+@import './components/_module';
 @import './views/_login';
+@import './views/_content';
 
 html,
 body {

@@ -1,0 +1,12 @@
+@import '../_mixin';
+.user-img {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    @include border-radius(100%);
+    @include bg-src($user-img);
+}
+.sub-content {
+    margin-top: 40px;
+    @include position(absolute, 0, 0, 0, 0);
+}

@@ -1,0 +1,53 @@
+@import '../mixin';
+.module-header,
+.module-content-heahder,
+.pagination-content, {
+    @include size(100%, 50px);
+    flex-shrink: 0;
+}
+
+.module-content {
+    @include position(absolute, 50px, 0, 0, 0);
+}
+
+.module-table {
+    padding: 0 15px;
+    @include position(absolute, 50px, 320px, 50px, 0);
+    .ag-material .ag-body {
+        border-bottom: 1px solid #808080;
+    }
+    .ag-material .ag-header-cell-label,
+    .ag-material .ag-cell-focus,
+    .ag-material .ag-ltr .ag-cell-no-focus {
+        text-align: center;
+    }
+    .ag-material .ag-header {
+        border-top: 1px solid #808080;
+    }
+    .ag-material .ag-pinned-left-header,
+    .ag-material .ag-pinned-left-cols-viewport {
+        border-right: 1px solid #808080;
+    }
+}
+
+.module-filter {
+    @include size(320px, 100%);
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-shrink: 0;
+    border-left: 1px solid $border-color-1;
+    .filter-item {
+        color: #333!important;
+        &.filter-item-selected {
+            color: #fff!important;
+            background-color: rgba(0, 0, 0, 0.75)!important;
+            @include transition(background-color, linear, 0.2s);
+        }
+        .icon {
+            color: $success!important;
+        }
+        .content {
+            padding: .5em 1em .5em!important;
+        }
+    }
+}

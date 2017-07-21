@@ -1,3 +1,4 @@
-export const LOADING_STATUS = 'loading_status';
-export const USER_INFO = 'user_info';
-export const SIDE_MENU = 'side_menu';
+export const LOADING_STATUS = 'LOADING_STATUS';
+export const USER_INFO = 'USER_INFO';
+export const SIDE_MENU = 'SIDE_MENU';
+export const ORDER_LIST = 'ORDER_LIST';
