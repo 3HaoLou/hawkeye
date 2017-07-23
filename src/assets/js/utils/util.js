@@ -86,9 +86,6 @@ export function bindRenderFn(config, components) {
     _.forEach(config, (value) => {
         // if (renderFn && renderFn.length > 0) {
         //     _.forEach(renderFn, (func) => {
-        //         if (value.cellRenderer === func.name) {
-        //             value.cellRenderer = func;
-        //         }
         //     });
         // }
 
@@ -159,4 +156,14 @@ export function convertChangeLineTag(context) {
 
 export function getSubContainerSize() {
     return (window.innerHeight - 170) + 'px';
+}
+
+export function getInteger(num) {
+    let _num = num + '';
+
+    if (_num.indexOf('.') === -1) {
+        return num;
+    } else {
+        return parseInt(_num.split('.')[0]) + 1;
+    }
 }

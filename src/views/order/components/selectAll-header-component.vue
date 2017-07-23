@@ -6,11 +6,13 @@
 <script>
     import Vue from 'vue';
     import Vuex from 'vuex';
-    import { mapActions } from 'vuex';
+    import store from '../../../store';
     import JCheckbox from '../../../components/checkbox/index';
 
-    Vue.use(Vuex);
-    
+    // console.log(store);
+
+    // Vue.prototype.$store = store;
+
     export default Vue.extend({
         components: {
             JCheckbox
@@ -27,16 +29,25 @@
                 selectAll: false,
             }
         },
+        watch: {
+            'params' (value) {
+                console.log(value);
+            }
+        },
         mounted () {
             // console.log(this.params);  
+
+            console.log(store);
         },
         methods: {
             onSortRequested ($event) {
                 console.log(this.selectAll, this.params);
 
-                this.$store.dispatch('selectAllOrderList', this.selectAll);
+                store.dispatch('selectAllOrderList', this.selectAll);
 
-                console.log(this.mapActions);
+                this.params.api.refreshView();
+
+
             }
         }
     })

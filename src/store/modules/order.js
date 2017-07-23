@@ -21,11 +21,6 @@ const mutations = {
     [types.ORDER_LIST](state, orderList) {
         state.orderList = orderList;
     },
-    [types.SELECT_ALL_ORDER_LIST](state, flag) {
-        _.forEach(state.orderList, (value) => {
-            value.selected = flag        
-        });
-    },
     [types.ORDER_LIST_PAGE](state, orderListPage) {
         state.orderListPage = orderListPage;
     }
@@ -43,9 +38,6 @@ const actions = {
 
             commit(types.LOADING_STATUS, false);
         })
-    },
-    selectAllOrderList({ commit }, flag) {
-        commit(types.SELECT_ALL_ORDER_LIST, flag);
     },
     orderListPage({ commit }, page) {
         commit(types.ORDER_LIST_PAGE, page);

@@ -2,7 +2,8 @@
  * Created by jason on 28/06/2017.
  */
 export const ORDER_LIST = [
-    { headerName: '#', field: 'index', pinned: 'left', suppressMenu: true, width: 60, headerComponentFramework: 'index', cellRendererFramework: 'index' },
+    // { headerName: '#', field: 'index', pinned: 'left', suppressMenu: true, width: 60, headerComponentFramework: 'index', cellRendererFramework: 'index', headerCheckboxSelection: true, checkboxSelection: true },
+    { headerName: '', field: '', pinned: 'left', suppressMenu: true, suppressSorting: true, suppressFilter: true, width: 60, headerCheckboxSelection: true, checkboxSelection: true },
     { headerName: '订单号', field: 'orderNo', width: 80, suppressMenu: true, headerComponentFramework: 'orderNo' },
     { headerName: '订单状态', field: 'statusDesc', width: 100, suppressMenu: true, headerComponentFramework: 'statusDesc', cellRendererFramework: 'statusDesc' },
     { headerName: '联系人', field: 'clientName', width: 100, suppressMenu: true, headerComponentFramework: 'clientName' },

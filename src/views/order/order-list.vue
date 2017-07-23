@@ -8,7 +8,7 @@
         <j-module-content v-if="orderList">
             <div class="w-full h-full" layout="column" layout-align="space-between">
                 <div class="module-content-heahder w-full p-m" layout="row" layout-align="space-between center">
-                    <div>当前显示1-{{orderList.pageNum}}, 共{{orderList.total}}</div>
+                    <div>当前显示&nbsp;&nbsp;{{orderListPage === 1 ? 1 : ((orderListPage - 1) * pageSize) + 1}}&nbsp;&nbsp;-&nbsp;&nbsp;{{orderListPage === 1 ? pageSize : (orderListPage * pageSize > orderList.total ? orderList.total : orderListPage * pageSize)}}, 共&nbsp;&nbsp;{{orderList.total}}</div>
                     <div class="ui left icon input">
                         <input type="text" placeholder="搜索...">
                         <i class="search icon"></i>
@@ -18,9 +18,10 @@
                 <j-pagination 
                     :current-page="orderListPage" 
                     :total="orderList.total"
+                    @first="first"
                     @previous="previous"
                     @next="next"
-                    @set-page="setPage"
+                    @last="last"
                     @page-size-changed="onPageSizeChanged"></j-pagination>
             </div> 
             <j-module-filter>
@@ -60,10 +61,8 @@
                         <!-- <j-button :type="'success'">保存</j-button> -->
                         <j-button :type="'info'">清空</j-button>
                     </div>
-                    <div class="ui info message">
-                        <div class="header">
-                            将筛选添加和显示字段保存到我的筛选
-                        </div>
+                    <div class="p-l-s p-r-s p-b-s">
+                        <j-button :type="'success'" :is-full="true">将筛选添加和显示字段保存到我的筛选</j-button>
                     </div>
                     <j-accordion :title="'渠道'">
                         <div class="ui small aligned selection list">
@@ -314,14 +313,14 @@
     import JDatepicker from '../../components/datepicker/index';
     import JSelect from '../../components/select/index';
     import JAutocomplete from '../../components/autocomplete/index';
-    import selectAllHeaderComponent from './components/selectAll-header-component.vue';
-    import selectComponent from './components/select-component.vue';
+    // import selectAllHeaderComponent from './components/selectAll-header-component.vue';
+    // import selectComponent from './components/select-component.vue';
     import orderNoHeaderComponent from './components/orderNo-header-component.vue';
     import statusDescHeaderComponent from './components/statusDesc-header-component.vue';
     import statusDescComponent from './components/statusDesc-component.vue';
     import clientNameHeaderComponent from './components/clientName-header-component.vue';
     import clientMobileHeaderComponent from './components/clientMobile-header-component.vue';
-    import { bindRenderFn, getGridLocaleText, getGridSize } from '../../assets/js/utils/util';
+    import { bindRenderFn, getGridLocaleText, getGridSize, getInteger } from '../../assets/js/utils/util';
     import { ORDER_LIST } from '../../assets/js/constants/grid';
     import CONFIG from '../../assets/js/constants/config';
 
@@ -515,7 +514,6 @@
         },
         watch: {
             'orderListPage' (value) {
-
                 let params = {
                     pageNo: value
                 };
@@ -536,24 +534,27 @@
             let _columnDefs = bindRenderFn(
                 ORDER_LIST,
                 [
-                    { field: 'index', headerComponent: selectAllHeaderComponent, cellComponent: selectComponent },
+                    // { field: 'index', headerComponent: selectAllHeaderComponent, cellComponent: selectComponent },
                     { field: 'orderNo', headerComponent: orderNoHeaderComponent },
                     { field: 'statusDesc', headerComponent: statusDescHeaderComponent, cellComponent: statusDescComponent },
                     { field: 'clientName', headerComponent: clientNameHeaderComponent },
                     { field: 'clientMobile', headerComponent: clientMobileHeaderComponent },
-                ]
+                ],
             );
 
             this.gridOptions = {
                 columnDefs: _columnDefs,
                 showToolPanel: false,
-                rowSelection: 'single',
+                rowSelection: 'multiple',
                 pivotMode: false,
                 enableSorting: true,
                 suppressTouch: true,
                 suppressMenu: true,
                 suppressMenuHide: true,
-                localeText: getGridLocaleText()
+                localeText: getGridLocaleText(),
+                onRowSelected: this.onRowSelect,
+                onSelectionChanged: this.onSelectionChanged,
+                floatingBottomRowData: [{orderNo: 1, clientMobile: 13641703354}]
             };
         },
         mounted () {
@@ -566,10 +567,19 @@
             onCellClicked (params) {
 
             },
+            onRowSelect (event) {
+                console.log(event);
+            },
+            onSelectionChanged() {
+
+            },
             onPageSizeChanged (pageSize) {
                 console.log(pageSize);
 
                 this.pageSize = pageSize.value;
+            },
+            first () {
+                this.$store.dispatch('orderListPage', 1);
             },
             previous () {
                 this.$store.dispatch('orderListPage', --this.orderListPage);
@@ -577,11 +587,8 @@
             next () {
                 this.$store.dispatch('orderListPage', ++this.orderListPage);
             },
-            setPage (index) {
-                console.log(index);
-                if (index > 0) {
-                    this.$store.dispatch('orderListPage', index);
-                }
+            last () {
+                this.$store.dispatch('orderListPage', getInteger(this.orderList.total / this.pageSize));
             },
             selectPublic (item) {
                 if (item.name === this.selectedPublickFilter) {

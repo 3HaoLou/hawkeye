@@ -49,25 +49,28 @@
         },
         data () {
             return {
-                rowData: null
+
             }
         },
         watch: {
-            'gridData' (value) {
-                console.log(value);
+            // 'gridData' (value) {
+            //     console.log(value);
 
-                if (value) {
-                    this.rowData = value;
-                }
-            },
+            //     // if (value) {
+            //     //     this.rowData = value;
+            //     // }
+            // },
             'toggleToolPanel' (value) {
-                console.log(value);
                 this.gridOptions.api.showToolPanel(value);
             }
         },
         computed: {
             gridSize () {
                 return getGridSize();
+            },
+            rowData () {
+                console.log(this.gridData);
+                return this.gridData;
             }
         },
         beforeMount () {
@@ -77,7 +80,7 @@
             }
         },
         mounted () {
-            this.rowData = this.gridData;
+            // this.rowData = this.gridData;
         },
         methods: {
             onReady () {
